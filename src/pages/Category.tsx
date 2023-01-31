@@ -1,3 +1,7 @@
+import {useContext} from "react";
+import {GuildContext} from "../utils/context/GuildContext";
+
 export const Category = () => {
-    return <div>Category</div>
+    const {guildId} = useContext(GuildContext)
+    return <div>Category Page {guildId}</div>
 }
