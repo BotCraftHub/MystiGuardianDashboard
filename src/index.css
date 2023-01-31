@@ -4,4 +4,9 @@ body {
     color: #fff;
     font-family: "DM Sans", sans-serif;
     font-size: 32px;
+    height: 100%;
+}
+
+html, #root {
+    height: 100%;
 }

@@ -1,9 +1,11 @@
 //TODO: Use flutter css once finished
 export const Home = () => (
     <div style={{
+        height: '100%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
+        alignItems: 'center',
     }}
     >
         <div></div>
@@ -11,6 +13,16 @@ export const Home = () => (
             <div>
                 <div>
                 </div>
+                <p>
+                    Login With Discord
+                </p>
+            </div>
+            <div>
+                <div>
+                </div>
+                <p>
+                    Support Server
+                </p>
             </div>
         </div>
         <div>
