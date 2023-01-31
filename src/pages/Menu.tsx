@@ -6,7 +6,7 @@ import {GuildContext} from "../utils/context/GuildContext";
 export const Menu = () => {
     const navigate = useNavigate()
     //context keeps track of the guildId
-    const { updateGuildId } = useContext(GuildContext)
+    const {updateGuildId} = useContext(GuildContext)
     return <div>
         <ul>
             {

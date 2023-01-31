@@ -3,10 +3,27 @@ body {
     background-color: #242424;
     color: #fff;
     font-family: "DM Sans", sans-serif;
-    font-size: 32px;
+    #font-size: 32px;
     height: 100%;
 }
 
 html, #root {
     height: 100%;
+}
+
+/* Add support to remove excess padding */
+
+@supports (-webkit-touch-callout: none) {
+    body {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+/* highlight when hovered and enable pointer events */
+
+a:hover {
+    background-color: #fff;
+    color: #242424;
+    cursor: pointer;
 }
