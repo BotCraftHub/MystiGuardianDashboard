@@ -94,3 +94,12 @@ export const GuildIcon = styled.img`
 export const MenuStyle = styled.div`
   padding: 16em 0;
 `;
+
+export const AppBarStyle = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5625em;
+  box-sizing: border-box;
+  border-bottom: 0.0625em solid rgba(255, 255, 255, 0.2);
+`;

@@ -8,6 +8,7 @@ import {SetLeaveMessage} from "./pages/config/SetLeaveMessagePage";
 import {SetLanguage} from "./pages/config/SetLanguagePage";
 import {EnableOrDisableWelcomeMessage} from "./pages/config/EnableOrDisbaleWelcomeMessagePage";
 import {GuildContext} from "./utils/context/GuildContext";
+import {AppBar} from "./components/AppBar";
 
 //Provider will be used to provide the context to the children
 function App() {
@@ -17,6 +18,9 @@ function App() {
     const updateGuildId = (guildId: string) => setGuildId(guildId)
 
     return <GuildContext.Provider value={{guildId, updateGuildId}}>
+        <Routes>
+            <Route path="/categories" element={<AppBar/>}/>
+        </Routes>
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/menu" element={<Menu/>}/>
