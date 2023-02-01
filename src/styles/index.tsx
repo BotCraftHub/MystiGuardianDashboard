@@ -1,30 +1,61 @@
 import styled from 'styled-components';
 
 export const MainButton = styled.div`
-  //TODO: At the end convert px to em
-  //gap between FaDiscord and p
-  gap: 10px;
+  gap: 0.625em;
   display: flex;
-  width: 750px;
+  width: 46.875em;
   background-color: #313030;
-  padding: 0.7em 0.1em;
+  padding: 0.25em 3.125em;
   box-sizing: border-box;
   //add gap between the two divs
-  margin-Bottom: 0.625em;
-  border-Radius: 3em;
-  border: 1px solid #313030;
+  border-Radius: 0.3125em;
+  border: 0.0625em solid #313030;
   //center the text and icon and remove excess padding
   justify-Content: center;
   align-Items: center;
-  box-Shadow: 0 0 0 0.5px #00000040;
+  box-Shadow: 0 0.0625em 0.3125em 0 rgba(77, 73, 73, 0.18);
+  margin: 0.625em 0;
+  //add fade effect on hover
+  &:hover {
+    background-color: #2b2b2b;
+    border: 0.0625em solid #2b2b2b;
+    box-Shadow: 0 0.0625em 0.3125em 0 rgba(77, 73, 73, 0.18);
+    cursor: pointer;
+  }
 `;
 
 export const HomeStyle = styled.div`
- height: 100%;
-        padding: 50px 0;
-        box-Sizing: border-box;
-        display: flex;
-        flex-Direction: column;
-        justify-Content: space-between;
-        align-Items: center;
+  height: 100%;
+  padding: 3.125em 0;
+  box-Sizing: border-box;
+  display: flex;
+  flex-Direction: column;
+  justify-Content: space-between;
+  align-Items: center;
+`;
+
+export const MainFooter = styled.div`
+  display: flex;
+  width: 46.875em;
+  justify-Content: space-between;
+  align-Items: center;
+
+  span {
+    color: #b9b9b9;
+
+    &:hover {
+      cursor: pointer;
+      color: #ffffff;
+    }
+  }
+`;
+
+export const GuildMenuStyle = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5em;
+  background-color: #252525;
+  border-radius: 0.3125em;
+  border: 0.0625em solid rgba(255, 255, 255, 0.8);
 `;

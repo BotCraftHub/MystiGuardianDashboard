@@ -1,5 +1,5 @@
 import {FaDiscord, FaQuestionCircle} from "react-icons/fa";
-import {HomeStyle, MainButton} from "../styles";
+import {HomeStyle, MainButton, MainFooter} from "../styles";
 
 //TODO: Use flutter css once finished
 export const Home = () => (
@@ -21,17 +21,12 @@ export const Home = () => (
                 </p>
             </MainButton>
         </div>
-        <div style={{
-            display: 'flex',
-            width: '750px',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-        }}>
+        <MainFooter>
             <span>Privacy Policy</span>
             <span>Terms of Service</span>
             <span> The Black Onion team</span>
             <span>Contact us</span>
             <span>© 2023 Black Onion</span>
-        </div>
+        </MainFooter>
     </HomeStyle>
 );
