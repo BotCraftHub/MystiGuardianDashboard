@@ -19,16 +19,16 @@ function App() {
 
     return <GuildContext.Provider value={{guildId, updateGuildId}}>
         <Routes>
-            <Route path="/categories" element={<AppBar/>}/>
+            <Route path="/dashboard/*" element={<AppBar/>}/>
         </Routes>
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/menu" element={<Menu/>}/>
-            <Route path="/categories" element={<Category/>}/>
-            <Route path="/guild/set-welcome-message" element={<SetWelcomeMessage/>}/>
-            <Route path="/guild/set-leaving-message" element={<SetLeaveMessage/>}/>
-            <Route path="/guild/set-language" element={<SetLanguage/>}/>
-            <Route path="/guild/enable-or-disable-welcome-message" element={<EnableOrDisableWelcomeMessage/>}/>
+            <Route path="/dashboard/categories" element={<Category/>}/>
+            <Route path="/dashboard/welcome-message" element={<SetWelcomeMessage/>}/>
+            <Route path="/dashboard/leaving-message" element={<SetLeaveMessage/>}/>
+            <Route path="/dashboard/language" element={<SetLanguage/>}/>
+            <Route path="/dashboard/welcome-message-intermittent" element={<EnableOrDisableWelcomeMessage/>}/>
         </Routes>
     </GuildContext.Provider>
 }

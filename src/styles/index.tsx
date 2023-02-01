@@ -84,6 +84,17 @@ export const Container = styled.div`
   }
 `;
 
+export const CategoryStyle = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25em 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+`;
+
 export const GuildIcon = styled.img`
   border-radius: 50%;
   width: 3.125em;
@@ -99,7 +110,12 @@ export const AppBarStyle = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5625em;
+  padding: 1.5625em 2.1875em;
   box-sizing: border-box;
   border-bottom: 0.0625em solid rgba(255, 255, 255, 0.2);
+
+  h1 {
+    font-size: 1.25em;
+    font-weight: normal;
+  }
 `;
