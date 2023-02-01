@@ -1,4 +1,4 @@
-import {GuildMenuStyle} from "../styles";
+import {GuildIcon, GuildMenuStyle} from "../styles";
 
 type props = {
     guild: {
@@ -9,6 +9,6 @@ type props = {
 }
 
 export const GuildMenuItem = ({guild}: props) => <GuildMenuStyle>
-    <img src={guild.icon} alt={guild.name}/>
+    <GuildIcon src={guild.icon} alt={guild.name} width={50} height={50}/>
     <p>{guild.name}</p>
 </GuildMenuStyle>

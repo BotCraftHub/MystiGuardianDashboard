@@ -54,8 +54,43 @@ export const GuildMenuStyle = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0.5em;
+  align-items: center;
+  padding: 0.7em 1.25em;
   background-color: #252525;
   border-radius: 0.3125em;
-  border: 0.0625em solid rgba(255, 255, 255, 0.8);
+  border: 0.0625em solid rgba(255, 255, 255, 0.07);
+  margin: 0.625em 0;
+
+  //add fade effect on hover
+  &:hover {
+    background-color: #2b2b2b;
+    border: 0.0625em solid #2b2b2b;
+    box-shadow: 0 0.0625em 0.3125em 0 rgba(77, 73, 73, 0.18);
+    cursor: pointer;
+  }
+`;
+
+export const Container = styled.div`
+  width: 75em;
+  margin: 0 auto;
+
+  h1 {
+    //center the text
+    text-align: center;
+    color: #ffffff;
+    font-size: 2.5em;
+    font-weight: 700;
+    margin: 0.625em 0;
+  }
+`;
+
+export const GuildIcon = styled.img`
+  border-radius: 50%;
+  width: 3.125em;
+  height: 3.125em;
+  margin-right: 1.25em;
+`;
+
+export const MenuStyle = styled.div`
+  padding: 16em 0;
 `;
