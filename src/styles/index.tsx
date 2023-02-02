@@ -24,6 +24,15 @@ export const MainButton = styled.div`
   }
 `;
 
+export const TextButton = styled(MainButton)`
+  display: flex;
+  width: 15.875em;
+  height: 3.425em;
+  font-size: 1.1em;
+  background-color: transparent;
+  padding: 0.25em 3.125em;
+`;
+
 export const HomeStyle = styled.div`
   height: 100%;
   padding: 3.125em 0;
@@ -107,4 +116,31 @@ export const AppBarStyle = styled.header`
     font-size: 1.25em;
     font-weight: normal;
   }
+`;
+
+export const Title = styled.p`
+  font-size: 1.6em;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0.625em 0;
+`;
+
+type FlexProps = Partial<{
+    alignItems: string;
+    justifyContent: string;
+    flexDirection: string;
+}>;
+
+export const Flex = styled.div<FlexProps>`
+  display: flex;
+  align-items: ${(props) => props.alignItems};
+  justify-content: ${(props) => props.justifyContent};
+  flex-direction: ${(props) => props.flexDirection};
+`;
+
+export const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.625em;
+  margin: 1.25em 0;
 `;
