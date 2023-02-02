@@ -84,17 +84,6 @@ export const Container = styled.div`
   }
 `;
 
-export const CategoryStyle = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.25em 0;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-`;
-
 export const GuildIcon = styled.img`
   border-radius: 50%;
   width: 3.125em;
