@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const MainButton = styled.div`
   gap: 0.625em;
@@ -91,6 +91,18 @@ export const Container = styled.div`
     font-weight: 700;
     margin: 0.625em 0;
   }
+
+  //add margin between the two sections
+  section {
+    margin: 0.725em 0;
+  }
+
+  label {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0.625em 0;
+  }
 `;
 
 export const GuildIcon = styled.img`
@@ -118,7 +130,7 @@ export const Title = styled.p`
   font-size: 1.6em;
   font-weight: 700;
   color: #ffffff;
-  margin: 0.625em 0;
+  margin: 0.925em 0;
 `;
 
 type FlexProps = Partial<{
@@ -146,23 +158,35 @@ type ButtonProps = Partial<{
 }>;
 
 export const Button = styled.button<ButtonProps>`
-  padding: 0.625em 1.25em;
+  padding: 0.625em 1.5em;
   border-radius: 0.3125em;
-  border: none;
   outline: none;
+  border: none;
+  font-size: 1em;
+  color: #fff;
   cursor: pointer;
-  font-size: 1.1em;
-  font-weight: 700;
-  color: #ffffff;
-  background-color: ${(props) =>
-          props.variant === 'primary' ? '#7289da' : '#2c2f33'};
-  box-shadow: 0 0.0625em 0.3125em 0 rgba(77, 73, 73, 0.18);
-  transition: all 0.2s ease-in-out;
-
-  &:hover {
-    background-color: ${(props) =>
-            props.variant === 'primary' ? '#5f73bc' : '#23272a'};
-  }
+  ${({ variant }) =>
+          variant === 'primary' &&
+          css`
+      background-color: #006ed3;
+    `}
+  ${({ variant }) =>
+          variant === 'secondary' &&
+          css`
+      background-color: #3d3d3d;
+    `}
+  
+   &:hover {
+    ${({ variant }) =>
+            variant === 'primary' &&
+            css`
+          background-color: #0057a3;
+        `}
+    ${({ variant }) =>
+            variant === 'secondary' &&
+            css`
+          background-color: #2b2b2b;
+        `}
 `;
 
 
@@ -174,7 +198,7 @@ export const CustomSelect = styled.div`
   position: relative;
   display: inline-block;
   width: 100%;
-  margin: 0.625em 0;
+  margin: 0.825em 0;
 
   select {
     width: 100%;
@@ -208,15 +232,39 @@ export const CustomSelect = styled.div`
     }
 
     .select-arrow {
-        position: absolute;
-        top: 0.75em;
-        right: 1.25em;
-        width: 0;
-        height: 0;
-        border-left: 0.625em solid transparent;
-        border-right: 0.625em solid transparent;
-        border-top: 0.625em solid #ffffff;
-        pointer-events: none;
+      position: absolute;
+      top: 0.75em;
+      right: 1.25em;
+      width: 0;
+      height: 0;
+      border-left: 0.625em solid transparent;
+      border-right: 0.625em solid transparent;
+      border-top: 0.625em solid #ffffff;
+      pointer-events: none;
     }
+  }
+`;
+
+export const TextArea = styled.textarea`
+  padding: 0.875em 1em;
+  box-sizing: border-box;
+  font-size: 1.1em;
+  color: #ffffff;
+  background-color: #313030;
+  border: 0.0625em solid rgba(54, 57, 63, 0.44);
+  border-radius: 0.3125em;
+  outline: none;
+  resize: none;
+  width: 100%;
+  height: 3em;
+  margin: 0.725em 0;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: rgba(35, 39, 42, 0.88);
+  }
+
+  :focus {
+    background-color: rgba(35, 39, 42, 0.88);
   }
 `;
