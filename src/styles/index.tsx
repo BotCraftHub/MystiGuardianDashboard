@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const MainButton = styled.div`
   gap: 0.625em;
@@ -165,28 +165,28 @@ export const Button = styled.button<ButtonProps>`
   font-size: 1em;
   color: #fff;
   cursor: pointer;
-  ${({ variant }) =>
+
+  ${({variant}) =>
           variant === 'primary' &&
           css`
-      background-color: #006ed3;
-    `}
-  ${({ variant }) =>
+            background-color: #006ed3;
+          `}
+  ${({variant}) =>
           variant === 'secondary' &&
           css`
-      background-color: #3d3d3d;
-    `}
-  
-   &:hover {
-    ${({ variant }) =>
+            background-color: #3d3d3d;
+          `}
+  &:hover {
+    ${({variant}) =>
             variant === 'primary' &&
             css`
-          background-color: #0057a3;
-        `}
-    ${({ variant }) =>
+              background-color: #0057a3;
+            `}
+    ${({variant}) =>
             variant === 'secondary' &&
             css`
-          background-color: #2b2b2b;
-        `}
+              background-color: #2b2b2b;
+            `}
 `;
 
 

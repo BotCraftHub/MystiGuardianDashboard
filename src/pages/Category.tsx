@@ -19,7 +19,7 @@ export const Category = () => {
                 </Flex>
                 <Grid>
                     <TextButton
-                        onClick={() => handleClick(`/dashboard/welcome-message-intermittent`)}>Enable/Disable</TextButton>
+                        onClick={() => handleClick(`/dashboard/enable-or-disable-functions`)}>Enable/Disable</TextButton>
                     <TextButton onClick={() => handleClick(`/dashboard/welcome-message`)}>Welcome Message</TextButton>
                     <TextButton onClick={() => handleClick(`/dashboard/leaving-message`)}>Leave Message</TextButton>
                     <TextButton onClick={() => handleClick(`/dashboard/language`)}>Language</TextButton>

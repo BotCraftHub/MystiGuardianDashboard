@@ -6,9 +6,9 @@ import {Category} from "./pages/Category";
 import {SetWelcomeMessage} from "./pages/config/SetWelcomeMessgePage";
 import {SetLeaveMessage} from "./pages/config/SetLeaveMessagePage";
 import {SetLanguage} from "./pages/config/SetLanguagePage";
-import {EnableOrDisableWelcomeMessage} from "./pages/config/EnableOrDisbaleWelcomeMessagePage";
 import {GuildContext} from "./utils/context/GuildContext";
 import {AppBar} from "./components/AppBar";
+import {EnableOrDisableFunctions} from "./pages/config/EnableOrDisableFunctions";
 
 //Provider will be used to provide the context to the children
 function App() {
@@ -28,7 +28,7 @@ function App() {
             <Route path="/dashboard/welcome-message" element={<SetWelcomeMessage/>}/>
             <Route path="/dashboard/leaving-message" element={<SetLeaveMessage/>}/>
             <Route path="/dashboard/language" element={<SetLanguage/>}/>
-            <Route path="/dashboard/welcome-message-intermittent" element={<EnableOrDisableWelcomeMessage/>}/>
+            <Route path="/dashboard/enable-or-disable-functions" element={<EnableOrDisableFunctions/>}/>
         </Routes>
     </GuildContext.Provider>
 }
