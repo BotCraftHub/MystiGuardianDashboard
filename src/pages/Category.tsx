@@ -1,6 +1,6 @@
 import {useContext} from "react";
 import {GuildContext} from "../utils/context/GuildContext";
-import {Container, Flex, Grid, TextButton, Title} from "../styles";
+import {Container, Flex, Grid, Page, TextButton, Title} from "../styles";
 import {IoSettingsOutline} from 'react-icons/io5'
 import {useNavigate} from "react-router";
 
@@ -10,7 +10,7 @@ export const Category = () => {
     const handleClick = (path: string) => {
         navigate(path)
     }
-    return <div style={{padding: "3.125em 0"}}>
+    return <Page>
         <Container>
             <div>
                 <Flex alignItems={"center"} justifyContent={"space-between"}>
@@ -36,5 +36,5 @@ export const Category = () => {
                 </Grid>
             </div>
         </Container>
-    </div>
+    </Page>
 }

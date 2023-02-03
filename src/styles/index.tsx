@@ -100,10 +100,6 @@ export const GuildIcon = styled.img`
   margin-right: 1.25em;
 `;
 
-export const MenuStyle = styled.div`
-  padding: 16em 0;
-`;
-
 export const AppBarStyle = styled.header`
   display: flex;
   align-items: center;
@@ -143,4 +139,84 @@ export const Grid = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 0.625em;
   margin: 1.25em 0;
+`;
+
+type ButtonProps = Partial<{
+    variant: 'primary' | 'secondary';
+}>;
+
+export const Button = styled.button<ButtonProps>`
+  padding: 0.625em 1.25em;
+  border-radius: 0.3125em;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: ${(props) =>
+          props.variant === 'primary' ? '#7289da' : '#2c2f33'};
+  box-shadow: 0 0.0625em 0.3125em 0 rgba(77, 73, 73, 0.18);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: ${(props) =>
+            props.variant === 'primary' ? '#5f73bc' : '#23272a'};
+  }
+`;
+
+
+export const Page = styled.div`
+  padding: 3.125em 0;
+`;
+
+export const CustomSelect = styled.div`
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin: 0.625em 0;
+
+  select {
+    width: 100%;
+    padding: 0.75em 3.125em 0.75em 1.25em;
+    border-radius: 0.3125em;
+    border: 0.0625em solid rgba(54, 57, 63, 0.44);
+    outline: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #313030;
+    box-shadow: 0 0.0625em 0.3125em 0 rgba(77, 73, 73, 0.18);
+    transition: all 0.2s ease-in-out;
+
+    //disable default button style
+    -webkit-appearance: none;
+
+    //made the menu dropdown not up
+
+    option {
+      background-color: #2c2f33;
+    }
+
+    &:hover {
+      background-color: rgba(35, 39, 42, 0.88);
+    }
+
+    & > option {
+      color: #292929;
+    }
+
+    .select-arrow {
+        position: absolute;
+        top: 0.75em;
+        right: 1.25em;
+        width: 0;
+        height: 0;
+        border-left: 0.625em solid transparent;
+        border-right: 0.625em solid transparent;
+        border-top: 0.625em solid #ffffff;
+        pointer-events: none;
+    }
+  }
 `;
