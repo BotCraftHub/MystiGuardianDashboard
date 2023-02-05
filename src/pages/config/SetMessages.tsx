@@ -1,9 +1,9 @@
 import {Button, Container, CustomSelect, Flex, Page, TextArea, Title} from "../../styles";
 
-export const SetLeaveMessage = () => {
+export const SetMessages = () => {
     return <Page>
         <Container>
-            <Title>Set Leave Message</Title>
+            <Title>Set Welcome Message</Title>
             <section>
                 <div>
                     <label>Current Channel:</label>

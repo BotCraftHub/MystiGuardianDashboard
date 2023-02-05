@@ -144,13 +144,26 @@ export const Flex = styled.div<FlexProps>`
   align-items: ${(props) => props.alignItems};
   justify-content: ${(props) => props.justifyContent};
   flex-direction: ${(props) => props.flexDirection};
+  
+     ${(props) =>
+        props.flexDirection === 'column' &&
+        css`
+            height: 100%;
+        `}
+  
 `;
 
-export const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 0.625em;
-  margin: 1.25em 0;
+export const TestTextButtonGroup = styled.div`
+  //Two next to each with a gap
+  display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7em 1.25em;
+    background-color: #252525;
+    border-radius: 0.3125em;
+    border: 0.0625em solid rgba(255, 255, 255, 0.07);
+    margin: 20.625em 0;
 `;
 
 type ButtonProps = Partial<{
@@ -268,3 +281,5 @@ export const TextArea = styled.textarea`
     background-color: rgba(35, 39, 42, 0.88);
   }
 `;
+
+export const sideBar = styled.div``;
