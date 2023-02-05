@@ -85,16 +85,20 @@ export const Container = styled.div`
 
   h1 {
     //center the text
-    text-align: center;
+    text-align: start;
     color: #ffffff;
-    font-size: 2.5em;
-    font-weight: 700;
+    font-size: 1.5em;
+    font-weight: 550;
     margin: 0.625em 0;
   }
 
   //add margin between the two sections
   section {
     margin: 0.725em 0;
+
+    div {
+      font-size: 1em;
+    }
   }
 
   label {
@@ -103,6 +107,14 @@ export const Container = styled.div`
     color: #ffffff;
     margin: 0.625em 0;
   }
+`;
+
+export const AddWhiteLine = styled.div`
+  width: 100%;
+  height: 0.0625em;
+  background-color: rgba(255, 255, 255, 0.42);
+  padding: 0.05em 0;
+  margin: 1.2em 0 1.5em 0;
 `;
 
 export const GuildIcon = styled.img`
@@ -144,26 +156,26 @@ export const Flex = styled.div<FlexProps>`
   align-items: ${(props) => props.alignItems};
   justify-content: ${(props) => props.justifyContent};
   flex-direction: ${(props) => props.flexDirection};
-  
-     ${(props) =>
-        props.flexDirection === 'column' &&
-        css`
+
+  ${(props) =>
+          props.flexDirection === 'column' &&
+          css`
             height: 100%;
-        `}
-  
+          `}
+
 `;
 
 export const TestTextButtonGroup = styled.div`
   //Two next to each with a gap
   display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.7em 1.25em;
-    background-color: #252525;
-    border-radius: 0.3125em;
-    border: 0.0625em solid rgba(255, 255, 255, 0.07);
-    margin: 20.625em 0;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7em 1.25em;
+  background-color: #252525;
+  border-radius: 0.3125em;
+  border: 0.0625em solid rgba(255, 255, 255, 0.07);
+  margin: 20.625em 0;
 `;
 
 type ButtonProps = Partial<{
@@ -283,3 +295,13 @@ export const TextArea = styled.textarea`
 `;
 
 export const sideBar = styled.div``;
+
+export const PageTitle = styled.h1`
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0.625em 0;
+  //center the text
+  text-align: center;
+
+`;

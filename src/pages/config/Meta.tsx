@@ -1,12 +1,14 @@
-import {Button, Container, CustomSelect, Flex, Page, Title} from "../../styles";
+import {Button, Container, CustomSelect, Flex, Page, PageTitle} from "../../styles";
 
-export const SetLanguage = () => {
+export const Meta = () => {
     return <Page>
+        <PageTitle>Bot Configs</PageTitle>
+
         <Container>
-            <Title>Set A Language</Title>
+            <h1> Set a language</h1>
             <section>
                 <div>
-                    <label>Current Language:</label>
+                    <label>Current language:</label>
                 </div>
                 <CustomSelect>
                     <select id={"language"}>
@@ -16,6 +18,8 @@ export const SetLanguage = () => {
                     </select>
                 </CustomSelect>
             </section>
+
+            {/*<AddWhiteLine/>*/}
             <Flex justifyContent={"flex-end"}>
                 <Button variant={"secondary"} style={{marginRight: "0.625em"}}>
                     Reset

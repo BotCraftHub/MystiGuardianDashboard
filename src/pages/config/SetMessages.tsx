@@ -1,10 +1,29 @@
-import {Button, Container, CustomSelect, Flex, Page, TextArea, Title} from "../../styles";
+import {Button, Container, CustomSelect, Flex, Page, PageTitle, TextArea, Title} from "../../styles";
+import {useState} from "react";
 
 export const SetMessages = () => {
+    const [welcomeMessageEnablity, setWelcomeMessageEnablity] = useState("Choose an option");
+    const [leaveMessageEnablity, setLeaveMessageEnablity] = useState("Choose an option");
+
+
+
     return <Page>
+        <PageTitle>Join and Leave message Config</PageTitle>
         <Container>
-            <Title>Set Welcome Message</Title>
             <section>
+                <div>
+                    <label>Current Welcome Message Status: </label>
+                </div>
+                <CustomSelect>
+                    <select id={"welcomeMessageEnablity"}>
+                        <option disabled selected>Choose an option</option>
+                        <option onClick={() => setWelcomeMessageEnablity("enable")}>Enable</option>
+                        <option onClick={() => setWelcomeMessageEnablity("disable")}>Disable</option>
+                    </select>
+                </CustomSelect>
+            </section>
+            {/* If enabled, show the following: */}
+            {welcomeMessageEnablity === "enable" && <section>
                 <div>
                     <label>Current Channel:</label>
                 </div>
@@ -16,13 +35,14 @@ export const SetMessages = () => {
                         <option>333</option>
                     </select>
                 </CustomSelect>
-            </section>
-            <section>
+            </section> }
+            {welcomeMessageEnablity === "enable" && <section>
                 <div>
                     <label htmlFor="message">Current Message:</label>
                 </div>
-                <TextArea id={"message"}></TextArea>
-            </section>
+                <TextArea id={"welcome_message"}></TextArea>
+            </section> }
+
             <Flex justifyContent={"flex-end"}>
                 <Button variant={"secondary"} style={{marginRight: "0.625em"}}>
                     Reset
@@ -33,4 +53,8 @@ export const SetMessages = () => {
             </Flex>
         </Container>
     </Page>
+}
+
+function addWelcomeMessage() {
+
 }
