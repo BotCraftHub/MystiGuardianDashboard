@@ -8,6 +8,7 @@ import {AppBar} from "./components/AppBar";
 import {SetMessages} from "./pages/config/SetMessages";
 import {Meta} from "./pages/config/Meta";
 import {Moderation} from "./pages/config/Moderation";
+import {Sidebar} from "./components/SideBar";
 
 //Provider will be used to provide the context to the children
 function App() {
@@ -19,6 +20,9 @@ function App() {
     return <GuildContext.Provider value={{guildId, updateGuildId}}>
         <Routes>
             <Route path="/dashboard/*" element={<AppBar/>}/>
+        </Routes>
+        <Routes>
+            <Route path="/dashboard/*" element={<Sidebar/>}/>
         </Routes>
         <Routes>
             <Route path="/" element={<Home/>}/>

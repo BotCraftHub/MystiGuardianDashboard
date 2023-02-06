@@ -1,23 +1,12 @@
-//TODO: Add a sidebar component
-
-import React from "react";
+import {fallDown as Menu} from 'react-burger-menu'
+import "../styles/sidebar.css"
 
 export const Sidebar = () => {
     return (
-        {/*} <Men>
-            <a className="menu-item" href="/">
-                Home
-            </a>
-            <a className="menu-item" href="/salads">
-                Salads
-            </a>
-            <a className="menu-item" href="/pizzas">
-                Pizzas
-            </a>
-            <a className="menu-item" href="/desserts">
-                Desserts
-            </a>
-        </Men> */}
-        
+        <Menu>
+            <a className="moderation" href="/dashboard/moderation">Moderation</a>
+            <a className="meta" href="/dashboard/meta">Meta</a>
+            <a className="messages" href="/dashboard/messages">Join/Leave</a>
+        </Menu>
     );
 }

@@ -1,3 +1,33 @@
+import {Button, Container, CustomSelect, Flex, Page, PageTitle} from "../../styles";
+
 export const Moderation = () => {
-    return <div>Moderation</div>
+    return <Page>
+        <PageTitle>Moderation COnfig</PageTitle>
+
+        <Container>
+            <h1>Enable/Disable Anti-Spoiler</h1>
+            <section>
+                <div>
+                    <label>Current status:</label>
+                </div>
+                <CustomSelect>
+                    <select id={"anti-spoiler"}>
+                        <option disabled selected>Choose a status</option>
+                        <option>Enabled</option>
+                        <option>Disabled</option>
+                    </select>
+                </CustomSelect>
+            </section>
+
+            {/*<AddWhiteLine/>*/}
+            <Flex justifyContent={"flex-end"}>
+                <Button variant={"secondary"} style={{marginRight: "0.625em"}}>
+                    Reset
+                </Button>
+                <Button variant={"primary"}>
+                    Save
+                </Button>
+            </Flex>
+        </Container>
+    </Page>
 }

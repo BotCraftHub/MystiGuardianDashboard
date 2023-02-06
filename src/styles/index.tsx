@@ -132,12 +132,17 @@ export const AppBarStyle = styled.header`
   padding: 1.5625em 2.1875em;
   box-sizing: border-box;
   border-bottom: 0.0625em solid rgba(255, 255, 255, 0.2);
-
-  h1 {
-    font-size: 1.25em;
-    font-weight: normal;
-  }
 `;
+
+export const AppBarTitle = styled.h1`
+  //center the text
+  text-align: center;
+  color: #ffffff;
+  font-size: 1.9em;
+  font-weight: 550;
+  margin: 0.625em 0;
+`;
+
 
 export const Title = styled.p`
   font-size: 1.6em;
