@@ -1,4 +1,5 @@
 import styled, {css} from 'styled-components';
+import "./switch.css";
 
 export const MainButton = styled.div`
   gap: 0.625em;
@@ -305,3 +306,26 @@ export const PageTitle = styled.h1`
   text-align: center;
 
 `;
+
+// @ts-ignore
+export const Switch = ({isOn, handleToggle, onColor, id}) => {
+    //use SwitchCss
+    return (
+        <>
+            <input
+                checked={isOn}
+                onChange={handleToggle}
+                className="react-switch-checkbox"
+                id={id}
+                type="checkbox"
+            />
+            <label
+                style={{background: isOn && onColor}}
+                className="react-switch-label"
+                htmlFor={id}
+            >
+                <span className={`react-switch-button`}/>
+            </label>
+        </>
+    );
+};
