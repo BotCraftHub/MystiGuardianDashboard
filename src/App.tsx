@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {Route, Routes} from "react-router";
-import {Home} from "./pages/Home";
+import {LoginPage} from "./pages/LoginPage";
 import {Menu} from "./pages/Menu";
-import {Category} from "./pages/Category";
+import {Dashboard} from "./pages/Dashboard";
 import {GuildContext} from "./utils/context/GuildContext";
 import {AppBar} from "./components/AppBar";
 import {SetMessages} from "./pages/config/SetMessages";
@@ -25,9 +25,9 @@ function App() {
             <Route path="/dashboard/*" element={<Sidebar/>}/>
         </Routes>
         <Routes>
-            <Route path="/" element={<Home/>}/>
+            <Route path="/" element={<LoginPage/>}/>
             <Route path="/menu" element={<Menu/>}/>
-            <Route path="/dashboard/categories" element={<Category/>}/>
+            <Route path="/dashboard" element={<Dashboard/>}/>
             <Route path="/dashboard/messages" element={<SetMessages/>}/>
             <Route path="/dashboard/meta" element={<Meta/>}/>
             <Route path="/dashboard/moderation" element={<Moderation/>}/>

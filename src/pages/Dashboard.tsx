@@ -3,7 +3,7 @@ import {GuildContext} from "../utils/context/GuildContext";
 import {Container, Page, TestTextButtonGroup, TextButton,} from "../styles";
 import {useNavigate} from "react-router";
 
-export const Category = () => {
+export const Dashboard = () => {
     const {guildId} = useContext(GuildContext)
     const navigate = useNavigate()
     const handleClick = (path: string) => {
