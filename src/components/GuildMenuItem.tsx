@@ -1,4 +1,4 @@
-import {GuildIcon, GuildMenuStyle} from "../styles";
+import {GuildIcon, GuildMenuStyle} from "../utils/styles";
 
 type props = {
     guild: {

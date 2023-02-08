@@ -1,4 +1,4 @@
-import {Button, Container, CustomSelect, Flex, Page, PageTitle} from "../../styles";
+import {Button, Container, CustomSelect, Flex, Page, PageTitle} from "../../utils/styles";
 
 export const Meta = () => {
     return <Page>

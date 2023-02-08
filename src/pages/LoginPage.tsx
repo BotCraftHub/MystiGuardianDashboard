@@ -1,5 +1,5 @@
 import {FaDiscord, FaQuestionCircle} from "react-icons/fa";
-import {HomeStyle, MainButton, MainFooter} from "../styles";
+import {HomeStyle, MainButton, MainFooter} from "../utils/styles";
 
 export const LoginPage = () => {
 

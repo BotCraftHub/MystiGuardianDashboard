@@ -18,20 +18,24 @@ function App() {
     const updateGuildId = (guildId: string) => setGuildId(guildId)
 
     return <GuildContext.Provider value={{guildId, updateGuildId}}>
-        <Routes>
-            <Route path="/dashboard/*" element={<AppBar/>}/>
-        </Routes>
-        <Routes>
-            <Route path="/dashboard/*" element={<Sidebar/>}/>
-        </Routes>
-        <Routes>
-            <Route path="/" element={<LoginPage/>}/>
-            <Route path="/menu" element={<Menu/>}/>
-            <Route path="/dashboard" element={<Dashboard/>}/>
-            <Route path="/dashboard/messages" element={<SetMessages/>}/>
-            <Route path="/dashboard/meta" element={<Meta/>}/>
-            <Route path="/dashboard/moderation" element={<Moderation/>}/>
-        </Routes>
+        {true ? (<>
+            <Routes>
+                <Route path="/dashboard/*" element={<AppBar/>}/>
+            </Routes>
+            <Routes>
+                <Route path="/dashboard/*" element={<Sidebar/>}/>
+            </Routes>
+            <Routes>
+                <Route path="/" element={<LoginPage/>}/>
+                <Route path="/menu" element={<Menu/>}/>
+                <Route path="/dashboard" element={<Dashboard/>}/>
+                <Route path="/dashboard/messages" element={<SetMessages/>}/>
+                <Route path="/dashboard/meta" element={<Meta/>}/>
+                <Route path="/dashboard/moderation" element={<Moderation/>}/>
+            </Routes> </>) : (<Routes>
+                <Route path="*" element={<LoginPage/>}/>
+            </Routes>
+        )}
     </GuildContext.Provider>
 }
 

@@ -1,6 +1,6 @@
 import {useContext} from "react";
 import {GuildContext} from "../utils/context/GuildContext";
-import {Container, Page, TestTextButtonGroup, TextButton,} from "../styles";
+import {Container, Page, TestTextButtonGroup, TextButton,} from "../utils/styles";
 import {useNavigate} from "react-router";
 
 export const Dashboard = () => {

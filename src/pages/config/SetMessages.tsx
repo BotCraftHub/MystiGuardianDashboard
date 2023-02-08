@@ -1,4 +1,14 @@
-import {AddWhiteLine, Button, Container, CustomSelect, Flex, Page, PageTitle, Switch, TextArea} from "../../styles";
+import {
+    AddWhiteLine,
+    Button,
+    Container,
+    CustomSelect,
+    Flex,
+    Page,
+    PageTitle,
+    Switch,
+    TextArea
+} from "../../utils/styles";
 import React, {useState} from "react";
 
 export const SetMessages = () => {

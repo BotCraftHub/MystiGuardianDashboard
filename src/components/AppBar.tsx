@@ -1,4 +1,4 @@
-import {AppBarStyle, AppBarTitle} from "../styles";
+import {AppBarStyle, AppBarTitle} from "../utils/styles";
 
 export const AppBar = () => {
     return <AppBarStyle>
