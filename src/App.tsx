@@ -9,6 +9,7 @@ import {SetMessages} from "./pages/config/SetMessages";
 import {Meta} from "./pages/config/Meta";
 import {Moderation} from "./pages/config/Moderation";
 import {Sidebar} from "./components/SideBar";
+import {useFetchUser} from "./utils/hooks/userFetchUser";
 
 //Provider will be used to provide the context to the children
 function App() {
@@ -16,7 +17,7 @@ function App() {
 
     //state variable and function to update the state
     const updateGuildId = (guildId: string) => setGuildId(guildId)
-
+    useFetchUser();
     return <GuildContext.Provider value={{guildId, updateGuildId}}>
         {true ? (<>
             <Routes>

@@ -1,13 +1,12 @@
 import {FaDiscord, FaQuestionCircle} from "react-icons/fa";
 import {HomeStyle, MainButton, MainFooter} from "../utils/styles";
+import {getAuthLogin} from "../utils/api";
 
 export const LoginPage = () => {
 
     const redirect = () => {
-        let port = process.env.PORT
-        let publicUrl = process.env.PUBLIC_URL
         //http://localhost:3001/api/auth/login
-        window.location.href = `${publicUrl}:${port}/api/auth/login`
+        window.location.href = getAuthLogin();
     }
 
     return (
