@@ -4,6 +4,8 @@ import {User} from "../types";
 
 export const useFetchUser = () => {
     const [user, setUser] = useState<User>();
+    const [error, setError] = useState();
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         getAuthStatus()
@@ -11,6 +13,9 @@ export const useFetchUser = () => {
                 console.log(data);
                 setUser(data);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                console.log(err);
+                setError(err);
+            });
     }, []);
 }
