@@ -31,6 +31,7 @@ To run the app you need to create a config.json file in the src/security folder 
 ```json
 {
   "REACT_APP_DISCORD_AUTH_CLIENT_ID": "",
+  "REACT_APP_DASHBOARD_URL": "http%3A%2F%2Flocalhost%3A3000%2Fmenu",
   "REACT_APP_DISCORD_AUTH_STATE": ""
 }
 ```
