@@ -24,15 +24,13 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### env
+### Config json file
 
-To run the app you need to create a .env file in the root directory and add the following variables:
+To run the app you need to create a config.json file in the src/security folder and add the following variables:
 
-```dotenv
-# Discord API client ID
-DISCORD_AUTH_CLIENT_ID=
-# Discord API service URL
-SERVICE_URL=
-# Discord API auth state
-DISCORD_AUTH_STATE=
+```json
+{
+  "REACT_APP_DISCORD_AUTH_CLIENT_ID": "",
+  "REACT_APP_DISCORD_AUTH_STATE": ""
+}
 ```

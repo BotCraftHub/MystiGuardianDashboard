@@ -10,6 +10,7 @@ import {Meta} from "./pages/config/Meta";
 import {Moderation} from "./pages/config/Moderation";
 import {Sidebar} from "./components/SideBar";
 import {useFetchUser} from "./utils/hooks/userFetchUser";
+import {Callback} from "./utils/hooks/Callback";
 
 //Provider will be used to provide the context to the children
 function App() {
