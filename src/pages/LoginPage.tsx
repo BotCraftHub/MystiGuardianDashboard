@@ -1,13 +1,17 @@
 import {FaDiscord, FaQuestionCircle} from "react-icons/fa";
 import {HomeStyle, MainButton, MainFooter} from "../utils/styles";
-import {getAuthLogin} from "../utils/api";
+import {
+    redirectToContact,
+    redirectToDiscord,
+    redirectToLicense,
+    redirectToPrivacyPolicy,
+    redirectToSupportServer,
+    redirectToTeam,
+    redirectToTermsOfService
+} from "../utils/LoginPageUtils";
 
 export const LoginPage = () => {
 
-    const redirect = () => {
-        //http://localhost:3001/api/auth/login
-        window.location.href = getAuthLogin();
-    }
 
     return (
         <HomeStyle
@@ -15,13 +19,13 @@ export const LoginPage = () => {
             {/*  needed to keep the divs in the center */}
             <div></div>
             <div>
-                <MainButton onClick={redirect}>
+                <MainButton onClick={redirectToDiscord}>
                     <FaDiscord size={50} color="5865F2"/>
                     <p style={{fontSize: '1.4em'}}>
                         Login With Discord
                     </p>
                 </MainButton>
-                <MainButton>
+                <MainButton onClick={redirectToSupportServer}>
                     <FaQuestionCircle size={50}/>
                     <p style={{fontSize: '1.4em'}}>
                         Support Server
@@ -29,11 +33,11 @@ export const LoginPage = () => {
                 </MainButton>
             </div>
             <MainFooter>
-                <span>Privacy Policy</span>
-                <span>Terms of Service</span>
-                <span> The Black Onion team</span>
-                <span>Contact us</span>
-                <span>© 2023 Black Onion</span>
+                <span onClick={redirectToPrivacyPolicy}>Privacy Policy</span>
+                <span onClick={redirectToTermsOfService}>Terms of Service</span>
+                <span onClick={redirectToTeam}>The Black Onion team</span>
+                <span onClick={redirectToContact}>Contact us</span>
+                <span onClick={redirectToLicense}>© 2023 Black Onion</span>
             </MainFooter>
         </HomeStyle>
     );

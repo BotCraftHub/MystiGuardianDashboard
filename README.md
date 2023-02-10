@@ -29,8 +29,10 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 To run the app you need to create a .env file in the root directory and add the following variables:
 
 ```dotenv
-# Server port
-PORT=
-# Public URL of the server - will get suffixed with `/auth/callback` - this is where the user will be redirected after authenticating
-PUBLIC_URL=
+# Discord API client ID
+DISCORD_AUTH_CLIENT_ID=
+# Discord API service URL
+SERVICE_URL=
+# Discord API auth state
+DISCORD_AUTH_STATE=
 ```

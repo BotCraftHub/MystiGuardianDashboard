@@ -19,7 +19,7 @@ function App() {
     const updateGuildId = (guildId: string) => setGuildId(guildId)
     useFetchUser();
     return <GuildContext.Provider value={{guildId, updateGuildId}}>
-        {true ? (<>
+        {/*{true ? (<>
             <Routes>
                 <Route path="/dashboard/*" element={<AppBar/>}/>
             </Routes>
@@ -36,7 +36,21 @@ function App() {
             </Routes> </>) : (<Routes>
                 <Route path="*" element={<LoginPage/>}/>
             </Routes>
-        )}
+        )} */}
+        <Routes>
+            <Route path="/dashboard/*" element={<AppBar/>}/>
+        </Routes>
+        <Routes>
+            <Route path="/dashboard/*" element={<Sidebar/>}/>
+        </Routes>
+        <Routes>
+            <Route path="/" element={<LoginPage/>}/>
+            <Route path="/menu" element={<Menu/>}/>
+            <Route path="/dashboard" element={<Dashboard/>}/>
+            <Route path="/dashboard/messages" element={<SetMessages/>}/>
+            <Route path="/dashboard/meta" element={<Meta/>}/>
+            <Route path="/dashboard/moderation" element={<Moderation/>}/>
+        </Routes>
     </GuildContext.Provider>
 }
 
