@@ -5,31 +5,37 @@ import {useCallback, useEffect} from "react";
  */
 export const Callback = () => {
     //Just do a fetch to my /auth/callback endpoint
-    const fetchCallback = useCallback(async () => {
+    const fetchCallback = useCallback(() => {
         //get the code added that has been added as an additional querystring parameter
         const code = new URLSearchParams(window.location.search).get('code');
-        alert("Code: " + code);
 
         //code is now exchanged for the user's access token by making a POST request to the token URL with the following parameters:
-        const res = await fetch('/api/auth/callback', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: JSON.stringify({
-                client_id: process.env.CLIENT_ID,
-                client_secret: process.env.CLIENT_SECRET,
-                grant_type: 'authorization_code',
-                code: code,
-                redirect_uri: process.env.DISCORD_AUTH_REDIRECT_URL,
+
+
+        fetch('microservice:/auth/callback?code=' + code)
+            .then(async response => {
+                const isJson = response.headers.get('content-type')?.includes('application/json');
+                const data = isJson && await response.json();
+
+                // check for error response
+                if (!response.ok) {
+                    // get error message from body or default to response status
+                    const error = (data && data.message) || response.status;
+                    return Promise.reject(error);
+                }
+
+                sessionStorage.set("session_id", data.session_id);
+                //Redirect to menus
+                window.location.href = '/menu';
             })
-        });
-
-        //TODO : FInish this
-
-        //Redirect to dashboard
-        window.location.href = '/menu';
+            .catch(error => {
+                alert(error);
+            });
     }, []);
+
+    useEffect(() => {
+        fetchCallback();
+    }, [fetchCallback]);
 
     //temporary return so path can be accessed
     return <div/>
