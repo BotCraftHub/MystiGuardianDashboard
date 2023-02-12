@@ -1,6 +1,7 @@
 import {getAuthLogin} from "./api";
 
 export const redirectToDiscord = () => {
+    console.log(getAuthLogin());
     //http://localhost:3001/api/auth/login
     window.location.href = getAuthLogin();
 }

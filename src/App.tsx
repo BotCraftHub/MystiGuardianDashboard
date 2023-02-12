@@ -51,6 +51,7 @@ function App() {
             <Route path="/dashboard/messages" element={<SetMessages/>}/>
             <Route path="/dashboard/meta" element={<Meta/>}/>
             <Route path="/dashboard/moderation" element={<Moderation/>}/>
+            <Route path="/api/auth/callback" element={<Callback/>}/>
         </Routes>
     </GuildContext.Provider>
 }
