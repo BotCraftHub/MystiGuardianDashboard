@@ -5,7 +5,7 @@ import configData from "../../security/config.json";
  * When redirected by discord to the callback page, the details needs to be taken and the user then redirected to the dashboard
  */
 export const Callback = () => {
-    let websiteUrl = process.env.DISCORD_AUTH_URL
+    let websiteUrl = configData.website_url;
 
     //Just do a fetch to my /auth/callback endpoint
     const fetchCallback = useCallback(() => {
@@ -28,13 +28,14 @@ export const Callback = () => {
                 }
 
                 alert("You have been logged in successfully");
+                sessionStorage.set("session_id", response.body);
                 //Redirect to menus
                 window.location.href = '/menu';
             })
             .catch(error => {
                 alert(error);
             });
-    }, []);
+    }, [websiteUrl]);
 
     useEffect(() => {
         fetchCallback();
