@@ -1,9 +1,12 @@
 import {useCallback, useEffect} from "react";
+import configData from "../../security/config.json";
 
 /**
  * When redirected by discord to the callback page, the details needs to be taken and the user then redirected to the dashboard
  */
 export const Callback = () => {
+    let websiteUrl = process.env.DISCORD_AUTH_URL
+
     //Just do a fetch to my /auth/callback endpoint
     const fetchCallback = useCallback(() => {
         //get the code added that has been added as an additional querystring parameter
@@ -12,7 +15,7 @@ export const Callback = () => {
         //code is now exchanged for the user's access token by making a POST request to the token URL with the following parameters:
 
 
-        fetch('microservice:/auth/callback?code=' + code)
+        fetch(websiteUrl + '/auth/callback?code=' + code)
             .then(async response => {
                 const isJson = response.headers.get('content-type')?.includes('application/json');
                 const data = isJson && await response.json();
@@ -24,7 +27,7 @@ export const Callback = () => {
                     return Promise.reject(error);
                 }
 
-                sessionStorage.set("session_id", data.session_id);
+                alert("You have been logged in successfully");
                 //Redirect to menus
                 window.location.href = '/menu';
             })
