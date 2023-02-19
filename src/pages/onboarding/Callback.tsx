@@ -8,8 +8,9 @@ import {
     redirectToTeam,
     redirectToTermsOfService
 } from "../../utils/LoginPageUtils";
+import {setCookie} from "../../utils/Cookies";
 
-let amountOfTimeTried : number = 0;
+let amountOfTimeTried: number = 0;
 
 export const CallbackPage = () => {
     if (amountOfTimeTried === 1) {
@@ -20,32 +21,41 @@ export const CallbackPage = () => {
     }
 
     useEffect(() => {
-
-
-        //get the code added that has been added as an additional querystring parameter
         const code = new URLSearchParams(window.location.search).get('code');
-        const state = new URLSearchParams(window.location.search).get('state');
 
-        fetch(configData.auth_api_url + `/auth/exchange_code?code=${code}&state=${state}`)
-            .then(async response => {
-                // TODO: error handling
-                const body = await response.text();
+        // change of approach: we get the token and save it in the session storage, then we redirect to the menu page
+        fetch("https://discord.com/api/v10" + "/oauth2/token", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams({
+                client_id: configData.client_id,
+                client_secret: configData.client_secret,
+                grant_type: "authorization_code",
+                code: code as string,
+                redirect_uri: "http://localhost:3000/onboarding/callback",
+            }).toString()
+        }).then(async response => {
+            let json = await response.json();
+            if (response.status !== 200) {
+                alert("Failed to get the session. Redirecting to login page.");
+                window.location.href = "/";
+                return;
+            }
 
-                if (!response.ok) {
-                    alert("Error while getting response!" + body)
-                    return;
-                }
+            //raw expires_in is 604800 for example, which is 7 days
+            let formatExperiesIn = new Date();
+            formatExperiesIn.setTime(formatExperiesIn.getTime() + (json.expires_in * 1000));
 
-                window.location.href = "/menu";
-            })
-            .catch(error => {
-                //make sure error makes sense
-                let errorMessage = error.toString();
-                if (errorMessage.includes("TypeError: Failed to fetch")) {
-                    errorMessage = "Failed to fetch. Please check your internet connection.";
-                }
-                alert("Error while getting session: " + errorMessage);
-            });
+            setCookie("token", json.access_token, {path: "/", expires: formatExperiesIn});
+
+            window.location.href = "/menu";
+        }).catch(error => {
+            console.log(error);
+            alert("Failed to get the session. Redirecting to login page.");
+            window.location.href = "/";
+        })
     }, []);
 
     return (
