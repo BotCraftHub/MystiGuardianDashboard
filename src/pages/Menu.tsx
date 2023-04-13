@@ -1,9 +1,10 @@
+import configData from "../security/config.json";
 import {useNavigate} from "react-router";
 import {useContext, useEffect, useState} from "react";
 import {GuildContext} from "../utils/context/GuildContext";
 import {GuildMenuItem} from "../components/GuildMenuItem";
 import {Container, Page} from "../utils/styles";
-import {discordBaseUrl, handleGuild} from "../utils/api";
+import {getBotInviteUrl, handleGuild} from "../utils/api";
 import {List} from "../utils/List";
 import {Guild} from "../entites/Guild";
 import {getCookie} from "../utils/Cookies";
@@ -20,17 +21,15 @@ export const Menu = () => {
 
     //state to make sure the guilds are loaded after fetching
     const [guilds, setGuilds] = useState<List<Guild>>(new List<Guild>())
-    const [guildState, setGuildState] = useState("loading")
-
+    const [guildState, setGuildState] = useState<String>("waiting")
 
     useEffect(() => {
-        if (guildState !== "loaded" || guilds?.size() === 0) {
-            fetch(discordBaseUrl + "/users/@me/guilds", {
+        if (guildState === "waiting") {
+            setGuildState("loading");
+            fetch(configData.bot_api + "/guilds", {
                 method: "GET",
                 headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": "Bearer " + getCookie("token"),
-                    "accept-encoding": "json"
+                    "Authorization": "Bearer " + getCookie("access_token"),
                 }
             }).then(async response => {
                 if (response.status !== 200) {
@@ -51,7 +50,7 @@ export const Menu = () => {
 
                 await setGuilds(independentList);
 
-                setGuildState("loaded")
+                setGuildState(independentList?.size() === 0 ? "no guilds" : "loaded");
             }).catch(error => {
                 console.log(error);
                 alert("Failed to get the guilds. Redirecting to login page.");
@@ -59,7 +58,6 @@ export const Menu = () => {
             })
         }
     }, [guildState, guilds, navigate])
-
 
     return (
         <Page>
@@ -72,7 +70,11 @@ export const Menu = () => {
                     return <div>
                         {
                             <div onClick={() => {
-                                handleClick(guild)
+                                if (guild !== null) {
+                                    handleClick(guild)
+                                } else {
+                                    window.open(getBotInviteUrl(), "_blank", "noopener,noreferrer")
+                                }
                             }}>
                                 <GuildMenuItem guild={guild}/>
                             </div>

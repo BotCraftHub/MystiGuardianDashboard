@@ -24,31 +24,23 @@ export const CallbackPage = () => {
         const code = new URLSearchParams(window.location.search).get('code');
 
         // change of approach: we get the token and save it in the session storage, then we redirect to the menu page
-        fetch("https://discord.com/api/v10" + "/oauth2/token", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: new URLSearchParams({
-                client_id: configData.client_id,
-                client_secret: configData.client_secret,
-                grant_type: "authorization_code",
-                code: code as string,
-                redirect_uri: "http://localhost:3000/onboarding/callback",
-            }).toString()
+        fetch(configData.bot_api + "/login?code=" + code, {
+            method: "POST"
         }).then(async response => {
-            let json = await response.json();
+            let accessToken = await response.text();
             if (response.status !== 200) {
                 alert("Failed to get the session. Redirecting to login page.");
                 window.location.href = "/";
                 return;
             }
 
-            //raw expires_in is 604800 for example, which is 7 days
-            let formatExperiesIn = new Date();
-            formatExperiesIn.setTime(formatExperiesIn.getTime() + (json.expires_in * 1000));
+            //base64 decode the 2nd out of 3 parts of the token the backend provides you and get the exp json field of it to check at which unix epoch timestamp it expires.
+            const decodedToken = atob(accessToken.split(".")[1]);
+            const decodedTokenJson = JSON.parse(decodedToken);
+            const expiryTime = decodedTokenJson.exp;
+            const formattedExpiryTime = new Date(expiryTime * 1000);
 
-            setCookie("token", json.access_token, {path: "/", expires: formatExperiesIn});
+            setCookie("access_token", accessToken, {path: "/", expires: formattedExpiryTime});
 
             window.location.href = "/menu";
         }).catch(error => {
