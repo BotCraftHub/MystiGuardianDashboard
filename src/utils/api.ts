@@ -58,3 +58,7 @@ export async function getBotGuilds() : Promise<List<Guild>> {
 export const getBotInviteUrl = () : string => {
     return configData.bot_invite_url
 }
+
+export const getBotApiUrl = () : string => {
+    return configData.bot_api
+}

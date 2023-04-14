@@ -1,10 +1,9 @@
-import configData from "../security/config.json";
 import {useNavigate} from "react-router";
 import {useContext, useEffect, useState} from "react";
 import {GuildContext} from "../utils/context/GuildContext";
 import {GuildMenuItem} from "../components/GuildMenuItem";
 import {Container, Page} from "../utils/styles";
-import {getBotInviteUrl, handleGuild} from "../utils/api";
+import {getBotApiUrl, getBotInviteUrl, handleGuild} from "../utils/api";
 import {List} from "../utils/List";
 import {Guild} from "../entites/Guild";
 import {getCookie} from "../utils/Cookies";
@@ -26,7 +25,7 @@ export const Menu = () => {
     useEffect(() => {
         if (guildState === "waiting") {
             setGuildState("loading");
-            fetch(configData.bot_api + "/guilds", {
+            fetch(getBotApiUrl() + "/guilds", {
                 method: "GET",
                 headers: {
                     "Authorization": "Bearer " + getCookie("access_token"),
