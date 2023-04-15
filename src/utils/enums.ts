@@ -1,5 +1,9 @@
 //enum
 
-export enum DbGuildUrls {
-    ANTI_SPOILER = 'guilds/moderation/anti-spoiler'
+enum DbGuildUrls {
+  MODERATION = "guilds/moderation",
+}
+
+export enum RetrievableSettings {
+  ANTI_SPOILER = DbGuildUrls.MODERATION + "/anti-spoiler",
 }
