@@ -1,9 +1,5 @@
-import { getCookie } from "../../utils/Cookies";
 import {
-  Button,
   Container,
-  CustomSelect,
-  Flex,
   Page,
   PageTitle,
 } from "../../utils/styles";
@@ -12,6 +8,7 @@ import { GuildContext } from "../../utils/context/GuildContext";
 import { fetchSettings, updateSettings } from "../../utils/db";
 import { RetrievableSettings } from "../../utils/enums";
 import { List } from "../../utils/List";
+import { Status } from "../../components/Status";
 
 export const Moderation = () => {
   const { guild } = useContext(GuildContext);
@@ -40,10 +37,10 @@ export const Moderation = () => {
     }
   }, [currentLoadingStatus, guildId]);
 
-  const save = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
+  const save = async (id: string, status: boolean) => {
     try {
-      updateSettings(
+      setCurrentAntiSpoilerStatus(status);
+      await updateSettings(
         RetrievableSettings.ANTI_SPOILER,
         guildId,
         List.of(currentAntiSpoilerStatus)
@@ -60,44 +57,13 @@ export const Moderation = () => {
       <Container>
         <h1>Enable/Disable Anti-Spoiler</h1>
         {currentLoadingStatus === "loading" && <p>Loading...</p>}
-        {currentLoadingStatus === "loaded" && (
-          <>
-            return{" "}
-            <section>
-              <div>
-                <label>Current status:</label>
-              </div>
-              <CustomSelect>
-                <select
-                  id="currentAntiSpoilerStatus"
-                  value={currentAntiSpoilerStatus ? "Enabled" : "Disabled"}
-                  onChange={(e) => {
-                    if (e.target.value === "Enabled") {
-                      setCurrentAntiSpoilerStatus(true);
-                    } else {
-                      setCurrentAntiSpoilerStatus(false);
-                    }
-                  }}
-                >
-                  <option disabled selected>
-                    Choose a status
-                  </option>
-                  <option value="Enabled">Enabled</option>
-                  <option value="Disabled">Disabled</option>
-                </select>
-              </CustomSelect>
-            </section>
-            {/*<AddWhiteLine/>*/}
-            <Flex justifyContent={"flex-end"}>
-              <Button variant={"secondary"} style={{ marginRight: "0.625em" }}>
-                Reset
-              </Button>
-              <Button variant={"primary"} onClick={save}>
-                Save
-              </Button>
-            </Flex>
-          </>
-        )}
+        {currentLoadingStatus === "loaded" &&
+          Status(
+            "anti-spoiler-status",
+            currentAntiSpoilerStatus,
+            setCurrentAntiSpoilerStatus,
+            save
+          )}
       </Container>
     </Page>
   );
