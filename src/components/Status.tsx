@@ -1,14 +1,12 @@
 import { CustomSelect, Flex, Button } from "../utils/styles";
 
 export const Status = (
-  id: string,
-  currentValueStatus: boolean,
-  setValue: React.Dispatch<React.SetStateAction<boolean>>,
+  statusId: string,
+  valueStatus: boolean,
   saveFunction: (id: string, status: boolean) => void
 ) => {
-
   const save = () => {
-    saveFunction(id, currentValueStatus);
+    saveFunction(statusId, valueStatus);
   };
 
   return (
@@ -19,13 +17,13 @@ export const Status = (
         </div>
         <CustomSelect>
           <select
-            id="currentAntiSpoilerStatus"
-            value={currentValueStatus ? "Enabled" : "Disabled"}
+            id={statusId}
+            value={valueStatus ? "Enabled" : "Disabled"}
             onChange={(e) => {
               if (e.target.value === "Enabled") {
-                setValue(true);
+                valueStatus = true;
               } else {
-                setValue(false);
+                valueStatus = false;
               }
             }}
           >
