@@ -66,3 +66,9 @@ export const getBotInviteUrl = (): string => {
 export const getBotApiUrl = (): string => {
   return configData.bot_api;
 };
+
+// https://github.com/microsoft/TypeScript/issues/30611#issuecomment-570773496
+export function createEnumChecker<T extends string, TEnumValue extends string>(enumVariable: { [key in T]: TEnumValue }) {
+  const enumValues = Object.values(enumVariable)
+  return (value: string): value is TEnumValue => enumValues.includes(value)
+}

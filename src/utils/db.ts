@@ -1,26 +1,23 @@
 import { getCookie } from "./Cookies";
 import { HashMap } from "./HashMap";
 import { getBotApiUrl } from "./api";
-import { RetrievableSettings } from "./enums";
 
 export const fetchSettings = async (
-  name: RetrievableSettings,
   guildId: string
 ): Promise<any> => {
-  fetch(getBotApiUrl() + name, {
+  fetch(getBotApiUrl() + "/settings/guild/" + guildId, {
     method: "GET",
     headers: {
       AUTHORIZATION: "Bearer " + getCookie("access_token"),
-      guildId: guildId,
     },
   })
     .then((response) => {
       if (response.ok) {
         return response.json();
       } else {
-        alert("Something went wrong while fetching the setting " + name);
+        alert("Something went wrong while fetching the settings ");
         throw new Error(
-          "Something went wrong while fetching the setting " + name
+          "Something went wrong while fetching the settings "
         );
       }
     })
@@ -33,11 +30,10 @@ export const fetchSettings = async (
 };
 
 export const updateSettings = async (
-  name: RetrievableSettings,
   guildId: string,
   data: HashMap<string, any>
 ) => {
-  fetch(getBotApiUrl() + name, {
+  fetch(getBotApiUrl() + "/settings/guild/" + guildId, {
     method: "POST",
     headers: {
       AUTHORIZATION: "Bearer " + getCookie("access_token"),
