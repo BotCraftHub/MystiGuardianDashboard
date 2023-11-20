@@ -24,15 +24,13 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### Config json file
+### .env file
 
-To run the app you need to create a config.json file in the src/security folder and add the following variables:
+To run the app you need to create an .env file in the root directory and add the following variables:
 
-```json
-{
-  "client_id": "",
-  "redirect_url": "",
-  "bot_api": "",
-  "bot_invite_url": ""
-}
+```dotenv
+REACT_APP_CLIENT_ID=
+REACT_APP_REDIRECT_URL=
+REACT_APP_BOT_API=
+REACT_APP_BOT_INVITE_URL=
 ```

@@ -38,7 +38,6 @@ bin/
 .DS_Store
 
 ### Config for secretes ###
-src/security/config.json
 .env.local
 .env.development.local
 .env.development

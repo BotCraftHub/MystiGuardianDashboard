@@ -4,14 +4,12 @@ import {LoginPage} from "./pages/LoginPage";
 import {Menu} from "./pages/Menu";
 import {Dashboard} from "./pages/Dashboard";
 import {GuildContext} from "./utils/context/GuildContext";
-import {SetMessages} from "./pages/config/SetMessages";
-import {Meta} from "./pages/config/Meta";
-import {Moderation} from "./pages/config/Moderation";
 import {CallbackPage} from "./pages/onboarding/Callback";
 import {getCookie} from "./utils/Cookies";
 import {Sidebar} from "./components/SideBar";
 import {AppBar} from "./components/AppBar";
 import {Guild} from "./entites/Guild";
+import {SetChannel} from "./pages/config/SetChannel";
 
 //Provider will be used to provide the context to the children
 function App() {
@@ -22,9 +20,9 @@ function App() {
     //if access token exists in cookies, redirect to dashboard
     //if not, redirect to login page
 
-    const accessToken = getCookie("access_token")
+    const jwt = getCookie("jwt")
 
-    if (accessToken === "") {
+    if (jwt === "" || jwt === undefined || jwt == null) {
         return <Routes>
             <Route path="/" element={<LoginPage/>}/>
             <Route path="/onboarding/callback" element={<CallbackPage/>}/>
@@ -41,9 +39,7 @@ function App() {
                 <Route path="/" element={<LoginPage/>}/>
                 <Route path="/menu" element={<Menu/>}/>
                 <Route path="/dashboard" element={<Dashboard/>}/>
-                <Route path="/dashboard/messages" element={<SetMessages/>}/>
-                <Route path="/dashboard/meta" element={<Meta/>}/>
-                <Route path="/dashboard/moderation" element={<Moderation/>}/>
+                <Route path="/dashboard/channel" element={<SetChannel/>}/>
                 <Route path="/onboarding/callback" element={<CallbackPage/>}/>
             </Routes>
         </GuildContext.Provider>
